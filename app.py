@@ -9,7 +9,13 @@ app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads"
 
 # Load NLP model
-nlp = spacy.load("en_core_web_sm")
+# Load NLP model safely (for Render)
+try:
+    nlp = spacy.load("en_core_web_sm")
+except:
+    from spacy.cli import download
+    download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 # Create upload folder if not exists
 if not os.path.exists("uploads"):
