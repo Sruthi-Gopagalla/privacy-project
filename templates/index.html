@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Privacy Text Transformer</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        textarea { width: 100%; height: 150px; }
+        button { padding: 10px 20px; margin-top: 10px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h2>AI-Based Privacy-Preserving Text Transformation</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        
+        <h3>Enter Text:</h3>
+        <textarea name="text" placeholder="Enter text here...">{{ original_text }}</textarea>
+        <br><br>
+
+        <h3>OR Upload Document:</h3>
+        <input type="file" name="file">
+        <br><br>
+
+        <button type="submit">Transform</button>
+    </form>
+
+    {% if transformed_text %}
+    <div class="result">
+        <h3>Privacy-Preserved Output:</h3>
+        <textarea readonly>{{ transformed_text }}</textarea>
+    </div>
+    {% endif %}
+
+</body>
+</html>
